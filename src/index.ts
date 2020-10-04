@@ -1,17 +1,10 @@
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
+import { Region } from "./opgg/enum/region";
+import { MatchScraper } from "./opgg/scraper/match-scraper";
 
-const axios = require("axios");
+const summonerId = '31390656'; // Sec
+const gameId = '3599895949'; // random game
 
-const summonerId = "31390656"; // Sec
-const gameId = "3599895949"; // random game
+let scraper = new MatchScraper(Region.NA);
 
-const url = `https://na.op.gg/summoner/matches/ajax/detail/gameId=${gameId}&summonerId=${summonerId}`;
-
-console.log(url);
-
-axios(url)
-  .then((response: AxiosResponse) => {
-    const html = response.data;
-    console.log(html);
-  })
-  .catch(console.error);
+scraper.getOPScoreBySummonerName(gameId, summonerId).then(result => console.log(result));
