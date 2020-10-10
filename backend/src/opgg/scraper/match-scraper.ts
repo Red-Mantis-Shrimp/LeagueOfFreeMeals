@@ -21,7 +21,7 @@ export class MatchScraper extends HttpClient {
      * @param gameId game id
      * @param summonerId summoner id
      */
-    public async getOPScoreBySummonerName(gameId: string, summonerId: string): Promise<Map<string, number>> {
+    public async getOPScoreBySummonerName(gameId: string, summonerId: string): Promise<{name: string, score: number}[]> {
         const matchWebpage = await this.getMatchWebpage(gameId, summonerId);
         const $ = cheerio.load(matchWebpage);
 
@@ -29,12 +29,11 @@ export class MatchScraper extends HttpClient {
             const summonerNameCell = $(element).find(SUMMONER_NAME_TEXT_FIELD_SELECTOR);
             return {
                 // summoner name is wrapped in <a> tag, which also contains hidden span values for rank, which we need to remove
-                summonerName: summonerNameCell.clone().children().remove().end().text().trim(), //https://stackoverflow.com/a/8851526
-                opScore: $(element).find(OPSCORE_TEXT_FIELD_SELECTOR).text()
+                name: summonerNameCell.clone().children().remove().end().text().trim(), //https://stackoverflow.com/a/8851526
+                score: $(element).find(OPSCORE_TEXT_FIELD_SELECTOR).text()
             }
         })
-        .get()
-        .reduce((contentMap: Map<string, number>, content) => contentMap.set(content.summonerName, content.opScore), new Map<string, number>());
+        .get();
 
         return opScoreBySummonerName;
     }

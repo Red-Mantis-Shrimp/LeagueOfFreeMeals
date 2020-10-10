@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon",
     "dev": "webpack-dev-server --open --config webpack.dev.ts",
     "build": "webpack --mode production --config webpack.prod.ts"
   },
@@ -44,10 +43,12 @@
   },
   "dependencies": {
     "@types/cheerio": "^0.22.22",
+    "@types/styled-components": "^5.1.4",
     "axios": "^0.20.0",
     "cheerio": "^1.0.0-rc.3",
     "puppeteer": "^5.3.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.0"
   }
 }
