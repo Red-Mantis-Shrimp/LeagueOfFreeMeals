@@ -42,11 +42,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@types/cheerio": "^0.22.22",
     "@types/styled-components": "^5.1.4",
     "axios": "^0.20.0",
-    "cheerio": "^1.0.0-rc.3",
-    "puppeteer": "^5.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.2.0"
