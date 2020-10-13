@@ -1,4 +1,5 @@
 module.exports = {
+    root: true,
     parser: '@typescript-eslint/parser', // Specifies the ESLint parser
     parserOptions: {
         ecmaVersion: 2020,
