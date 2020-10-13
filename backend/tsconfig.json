@@ -3,6 +3,9 @@
         "module": "commonjs",
         "esModuleInterop": true,
         "target": "es6",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
@@ -16,5 +19,5 @@
     },
     "include": [
         "src/**/*"
-    ]
+    ],
 }
