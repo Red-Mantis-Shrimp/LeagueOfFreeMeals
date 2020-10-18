@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { LofmClient } from "../http/lofm-client";
+import { Card, CardContent, StylesProvider } from '@material-ui/core';
+
 
 interface UserCardProps {
     name: string;
@@ -12,15 +14,15 @@ interface UserCardState {
     score: number;
 }
 
-const UserCardBox = styled.div({
-    background: '#e6f0fc',
-    margin: '5px',
-    height: '200px',
-    minWidth: '200px',
-    width: '15%',
-    padding: '10px',
-    float: 'left'
-});
+const StyledCard = styled(Card)`
+    background: #e6f0fc;
+    margin: 5px;
+    height: 200px;
+    minWidth: 200px;
+    width: 15%;
+    padding: 10px;
+    float: left;
+`;
 
 const UserProfileImage = styled.img({
     height: '70px',
@@ -46,13 +48,14 @@ export class UserCard extends React.Component<UserCardProps, UserCardState> {
 
     render() {
         return (
-            <UserCardBox>
-                <div>
+            <StylesProvider injectFirst>
+
+                <StyledCard>
                     <UserProfileImage src={this.props.profileImageSrc} />
                     {this.props.name}
-                </div>
-                <p>{this.state.score}</p>
-            </UserCardBox>
+                    <p>{this.state.score}</p>
+                </StyledCard>
+            </StylesProvider>
         );
     }
 
