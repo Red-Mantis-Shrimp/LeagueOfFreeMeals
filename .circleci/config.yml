@@ -2,13 +2,30 @@
 version: 2.1
 # Use a package of configuration called an orb.
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
+    # Declare a dependency on the welcome-orb
+    welcome: circleci/welcome-orb@0.4.1
+    node: circleci/node@2.0.2
+defaults: &defaults
+    working_directory: ~/frontend
+    docker:
+        - image: circleci/node:10.14.2
+
+jobs:
+    core:
+        <<: *defaults
+        steps:
+            - checkout
+            - run: npm install
+            - run: npm ci
+            - run: npm run build
+            - save_cache:
+              paths:
+                  - node_modules
+            - persist_to_workspace:
+              root: ~/frontend
+              paths: .
 # Orchestrate or schedule a set of jobs
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
-
+    core:
+        jobs:
+            - core
