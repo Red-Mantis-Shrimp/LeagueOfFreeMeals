@@ -6,7 +6,7 @@ orbs:
     welcome: circleci/welcome-orb@0.4.1
     node: circleci/node@2.0.2
 defaults: &defaults
-    working_directory: ~/repo
+    working_directory: ~/lofm
     docker:
         - image: circleci/node:10.14.2
 
@@ -16,13 +16,11 @@ jobs:
         steps:
             - checkout
 
-            - run: cd ./frontend
+            - run: cd frontend && npm install
 
-            - run: npm install
+            - run: cd frontend && npm ci
 
-            - run: npm ci
-
-            - run: npm run build
+            - run: cd frontend && npm run build
 # Orchestrate  or schedule a set of jobs
 workflows:
     core:
