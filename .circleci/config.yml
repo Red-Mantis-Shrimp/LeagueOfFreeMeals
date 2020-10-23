@@ -19,12 +19,12 @@ jobs:
             - run: npm ci
             - run: npm run build
             - save_cache:
-              paths:
+                paths:
                   - node_modules
             - persist_to_workspace:
-              root: ~/frontend
-              paths: .
-# Orchestrate or schedule a set of jobs
+                root: ~/frontend
+                paths: .
+# Orchestrate  or schedule a set of jobs
 workflows:
     core:
         jobs:
