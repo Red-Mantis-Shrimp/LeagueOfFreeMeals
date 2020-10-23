@@ -1,5 +1,5 @@
-import { HttpClient } from "./http-client";
-import * as endpoint from "../../config/endpoint.json";
+import { HttpClient } from './http-client';
+import * as endpoint from '../../config/endpoint.json';
 
 export class LofmClient extends HttpClient {
     public constructor() {
@@ -8,7 +8,7 @@ export class LofmClient extends HttpClient {
 
     /**
      * Returns the player's score from LoFM.
-     * 
+     *
      * @param playerName player name
      */
     public async getScore(summonerId: number): Promise<number> {
@@ -16,6 +16,4 @@ export class LofmClient extends HttpClient {
         // return response.data;
         return 0;
     }
-
 }
-
