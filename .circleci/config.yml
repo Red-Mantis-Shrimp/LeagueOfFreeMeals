@@ -6,7 +6,7 @@ orbs:
     welcome: circleci/welcome-orb@0.4.1
     node: circleci/node@2.0.2
 defaults: &defaults
-    working_directory: ~/repo/frontend
+    working_directory: ~/repo
     docker:
         - image: circleci/node:10.14.2
 
@@ -21,6 +21,8 @@ jobs:
                       - v1-dependencies-{{ checksum "package.json" }}
                       - v1-dependencies-
 
+            - run: cd ./frontend
+
             - run: npm install
 
             - run: npm ci
@@ -33,7 +35,7 @@ jobs:
                   key: v1-dependencies-{{ checksum "package.json" }}
 
             - persist_to_workspace:
-                  root: ~/repo/frontend
+                  root: ~/repo
                   paths: .
 # Orchestrate  or schedule a set of jobs
 workflows:
