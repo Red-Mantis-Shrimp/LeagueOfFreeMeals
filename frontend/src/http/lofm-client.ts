@@ -11,9 +11,8 @@ export class LofmClient extends HttpClient {
      *
      * @param playerName player name
      */
-    public async getScore(summonerId: number): Promise<number> {
-        // const response = await this.instance.get(`/score/${summonerId}`);
-        // return response.data;
-        return 0;
+    public async getScore(summonerName: string): Promise<number> {
+        const response = await this.instance.get(`/score/${summonerName}`);
+        return response.data.score;
     }
 }

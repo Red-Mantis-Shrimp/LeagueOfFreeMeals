@@ -5,7 +5,6 @@ import { Card, CardContent, StylesProvider } from '@material-ui/core';
 
 interface UserCardProps {
     name: string;
-    summonerId: number;
     profileImageSrc: string;
 }
 
@@ -40,8 +39,7 @@ export class UserCard extends React.Component<UserCardProps, UserCardState> {
     }
 
     async componentDidMount() {
-        const score = await this.scoreClient.getScore(this.props.summonerId);
-        console.log(score);
+        const score = await this.scoreClient.getScore(this.props.name);
         this.setState({ score: score });
     }
 

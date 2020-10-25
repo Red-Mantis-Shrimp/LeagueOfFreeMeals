@@ -13,12 +13,7 @@ export default function IApp(props: IAppProps) {
             <div>
                 {USERS.map((user) => {
                     return (
-                        <UserCard
-                            key={user.playerName}
-                            name={user.playerName}
-                            summonerId={user.summonerId}
-                            profileImageSrc={user.profileImageSrc}
-                        />
+                        <UserCard key={user.playerName} name={user.playerName} profileImageSrc={user.profileImageSrc} />
                     );
                 })}
             </div>
